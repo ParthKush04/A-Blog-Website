@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import{ Box, TextField, Button, styled, Typography } from '@mui/material';
 
+import{API} from '../../service/api';
 const Component=styled(Box)`
     width: 400px;
     margin-left: 550px;
@@ -39,13 +40,20 @@ height: 48px;
 border-radius: 2px;
 box-shadow: 0 2px 4px 0 rgb(0 0 0/ 20%);
 `;
+
+const Error=styled(Typography)`
+    font-size:10px;
+    color:#ff6161;
+    line-height:0;
+    margin-top: 10px;
+    font-weight:600;
+    `
 const Text=styled(Typography)`
     color: #878787;
     font-size: 16px;
 `
 
 const signupInitialValues ={
-    
 
 }
 
@@ -53,6 +61,10 @@ const Login = () => {
 
     const imageURL = 'https://www.sesta.it/wp-content/uploads/2021/03/logo-blog-sesta-trasparente.png';
     const [account, toggleAccount]=useState('login');
+    const[signup,setSignup]=useState(signupInitialValues);
+    const[error, setError]= useState('');
+
+
     const toggleSignup =() => {
         account==='signup' ? toggleAccount('login') : toggleAccount('signup');
     }
@@ -60,25 +72,39 @@ const Login = () => {
     const onInputChange = (e) =>{
     setSignup({...signup, [e.target.name]:e.target.value});
     }
+    const signupUser=async ()=>{
+       let response= await API.userSignup(signup);
+       if(response.isSuccess){
+        setError('');
+        setSignup(signupInitialValues);
+        toggleAccount('login')
+       }else{
+        setError('something went wrong! try again later');
+       }
+    }
 
     return (
         <Component>
             <Box>
-            <img src={imageURL} alt="login" />
+            <Image src={imageURL} alt="login" />
             {
             account === 'login' ?
             <Wrapper>
             <TextField variant="standard" label="Enter Username"/>
             <TextField variant="standard" label="Enter Password"/>
+            {error && <Error>{error}</Error>} 
             <LoginButton variant="contained">Login</LoginButton>
             <Text style={{textAlign: 'center'}}>OR</Text>
             <SignupButton onClick ={() => toggleSignup()}>Create an Account</SignupButton>
             </Wrapper> :
+
             <Wrapper>
             <TextField variant="standard" onChange={(e) => onInputChange(e)} name='name' label="Enter name"/>
             <TextField variant="standard" onChange={(e) => onInputChange(e)} name='username' label="Enter Username"/>
             <TextField variant="standard" onChange={(e) => onInputChange(e)} name='passsword' label="Enter Password"/>
-            <SignupButton >Signup</SignupButton>
+
+            {error && <Error>{error}</Error>}
+            <SignupButton onClick={() => signupUser()} >Signup</SignupButton>
             <Text style={{textAlign: 'center'}}>OR</Text>
             <LoginButton variant="contained" onClick={()=> toggleSignup()}>Already have an Account</LoginButton>
             </Wrapper>
