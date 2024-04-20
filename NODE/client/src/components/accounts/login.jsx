@@ -54,11 +54,8 @@ const Text=styled(Typography)`
 `
 
 const signupInitialValues ={
-    name:'',
-    username:'',
-    paasword:''
 
-};
+}
 
 const Login = () => {
 
