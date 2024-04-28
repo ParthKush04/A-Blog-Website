@@ -8,7 +8,7 @@ import {API } from '../../service/api';
 // by textareaautosize component the text area can be made small or enlarged 
 // inputbase - gives a texfield 
 
-const Container = styled(Box)(({ theme})=>({
+const Containers = styled(Box)(({ theme})=>({
     margin: '50px 100px',
     [theme.breakpoints.down('md')]:{
         margin:0
@@ -49,7 +49,7 @@ const InputTextField = styled(InputBase)`
  }
 
 
-const Update = () =>{
+const Updates = () =>{
   const [post,setPost] = useState(initialPost);
   const [file,setFile] = useState('');
 
@@ -96,7 +96,7 @@ const Update = () =>{
     }
   }
   return (
-    <Container>
+    <Containers>
         <Image src={url} alt="Banner" />
      <StyledFormControl>
         <label htmlFor="Fileinput">
@@ -116,7 +116,7 @@ const Update = () =>{
        name = "description"
        value={post.description}
        />
-    </Container>
+    </Containers>
   )
 }
-export default Update;
+export default Updates;

@@ -11,7 +11,7 @@ import { API } from '../../service/api';
 import { DataContext } from '../../context/DataProvider';
 import Comments from '../comments/comments';
 
-const Container = styled(Box)(({ theme})=>({
+const Containers = styled(Box)(({ theme})=>({
     margin: '50px 100px',
     [theme.breakpoints.down('md')]:{
         margin:0
@@ -83,7 +83,7 @@ const DetailView =() => {
     }
 
     return(
-        <Container>
+        <Containers>
             <Image src={url} alt='blog' />
 
             <Box style={{ float:'right'}}>
@@ -103,7 +103,7 @@ const DetailView =() => {
 
             <Description>{post.description }</Description>
             <Comments post = {post}/>
-        </Container>
+        </Containers>
     )
 }
 export default DetailView;
