@@ -11,15 +11,15 @@ const postSchema = mongoose.Schema({
     },
     picture: {
         type : String ,
-        required : true 
+        required : false ,
     },
     username: {
         type : String ,
-        required : true 
+        required : true, 
     },
     categories: {
         type : String ,
-        required : true 
+        required : true, 
     },
     createdDate:{
         type : Date ,
