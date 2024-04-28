@@ -18,7 +18,7 @@ export const uploadImage = (request,response)=>{
     const imageUrl = `${url}/file/${request.file.filename}`
     return response.status(200).json(imageUrl);
 }
-export const getImage = (request,response)=>{
+export const getImage =async (request,response)=>{
   try{
    const file = await gfs.files.findOne({filename : request.params.filename});
    const readStream = gridfsBucket.openDownloadStream(file._id);
