@@ -9,10 +9,10 @@ export const createPost = async(request,response)=>{
         const post = await new Post(request.body);
         post.save();
 
-        return request.status(200).json('Post saved successfully');
+        return request.status(200).JSON('Post saved successfully');
     }
     catch {error}{
-        return response.status(500).json(error);
+        return response.status(500).JSON(error);
     }
     } 
 export const getAllPosts = async(request, response) => {
@@ -25,19 +25,19 @@ export const getAllPosts = async(request, response) => {
             posts=await Post.find({});
         }
 
-        return response.status(200).json(posts);
+        return response.status(200).JSON(posts);
 
     }catch(error){
-        return response.status(500).json({msg:error.message})
+        return response.status(500).JSON({msg:error.message})
     }
 }
 export const getPost= async(request, response)=>{
     try{
         const post= await Post.findById(request.params.id);
 
-        return response.status(200).json(post);
+        return response.status(200).JSON(post);
     } catch(error){
-        return response.status(500).json({msg: error.message})
+        return response.status(500).JSON({msg: error.message})
     }
 }
 
@@ -49,9 +49,9 @@ export const updatePost =async(request, response) =>{
         }
         await Post.findByIdAndUpdate(request.params.id, {$set: request.body})
 
-        return response.status(200).json({msg: 'post updated successfully'})
+        return response.status(200).JSON({msg: 'post updated successfully'})
     }catch(error){
-        return response.status(500).json({error: error.mesage})
+        return response.status(500).JSON({error: error.mesage})
 
     }
 }
@@ -61,12 +61,12 @@ export const deletePost = async (request, response) => {
         const post = await Post.findById(request.params.id);
         
         if(!post){
-            return response.status(404).json({msg:'post not found'});
+            return response.status(404).JSON({msg:'post not found'});
         }
         await post.delete();
 
-        response.status(200).json({msg:'post deleted successfully'});
+        response.status(200).JSON({msg:'post deleted successfully'});
     } catch (error) {
-        response.status(500).json({error:error.message})
+        response.status(500).JSON({error:error.message})
     }
 }

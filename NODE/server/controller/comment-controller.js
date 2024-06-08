@@ -28,8 +28,8 @@ export const deleteComment = async (request, response) => {
         const comment = await Comment.findById(request.params.id);
         await comment.delete()
 
-        response.status(200).json('comment deleted successfully');
+        response.status(200).JSON('comment deleted successfully');
     } catch (error) {
-        response.status(500).json(error)
+        response.status(500).JSON(error)
     }
 }

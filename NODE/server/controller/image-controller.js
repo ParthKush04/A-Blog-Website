@@ -25,7 +25,7 @@ export const getImage =async (request,response)=>{
    readStream.pipe(response);
   }
   catch(error){
-    return response.status(500).json({msg : error.message})
+    return response.status(500).JSON({msg : error.message})
 
   }
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext } from 'react';
 
 import {Box, Container, Typography, styled} from '@mui/material';
 
@@ -9,7 +9,7 @@ import {useParams, Link, useNavigate} from 'react-router-dom';
 import { API } from '../../service/api';
 
 import { DataContext } from '../../context/DataProvider';
-import Comments from '../comments/comments';
+import Comments from '../comments/Comments'
 
 const Containers = styled(Box)(({ theme})=>({
     margin: '50px 100px',
@@ -56,9 +56,9 @@ const Description= styled(Typography)`
 
 const DetailView =() => {
 
-    const[post, setpost] =useState({});
+    const[post, setPost] =useState({});
 
-    const {id} = useParams();
+    const {Id} = useParams();
     const { account } = useContext(DataContext);
 
     const navigate=useNavigate();
@@ -78,7 +78,7 @@ const DetailView =() => {
     const deleteBlog=async ()=>{
         let response=await API.deletePost(post._id);
         if(response.isSuccess){
-            NavigateBefore('/');
+            navigate('/');
         }
     }
 

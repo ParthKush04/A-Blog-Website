@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { Box, TextareaAutosize, Button, styled } from '@mui/material';
 
-import { DataContext } from '../../../context/DataProvider';
+import { DataContext } from '../../context/DataProvider'
 
-import { API } from '../../../service/api';
+import { API } from '../../service/api';
 
 //components
 import Comment from './comment';

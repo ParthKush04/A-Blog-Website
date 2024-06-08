@@ -4,6 +4,6 @@ const tokenSchema = mongoose.Schema({
         type : string , 
         required : true 
     }
-})
+});
 const token = mongoose.model('token',tokenSchema);
 export default token ;

@@ -1,4 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import React from "react";
+import { styled,Box, Typography } from "@mui/material";
 
 import { addElipsis} from '../../utils/common-utils';
 
