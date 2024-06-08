@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { Typography, Box, styled } from "@mui/material";
 import { Delete } from '@mui/icons-material';
 
-import { API } from '../../../service/api';
-import { DataContext } from "../../../context/DataProvider";
+import { API } from '../../service/api';
+import { DataContext } from "../../context/DataProvider";
 
 const Component = styled(Box)`
     margin-top: 30px;

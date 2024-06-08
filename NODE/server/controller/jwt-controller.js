@@ -8,11 +8,11 @@ export const authenticateToken = (request,response,next)=>{
 
   if ( token == null)
   {
-    return response.status(401).json({msg: 'token is missing'});
+    return response.status(401).JSON({msg: 'token is missing'});
   }
   jwt.verify(token,process.env.access-secret-key,(error,user)=>{
    if (error){
-    return response.status(403).json({msg:'invalid token'})
+    return response.status(403).JSON({msg:'invalid token'})
    }
    request.user = user ;
    next();
